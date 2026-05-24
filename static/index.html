@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow – Управление задачами</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <span class="logo-icon">✓</span>
+                TaskFlow
+            </a>
+            <nav class="nav">
+                <a href="#" class="nav-link active" data-nav="all">Все задачи</a>
+                <a href="#" class="nav-link" data-nav="active">Активные</a>
+                <a href="#" class="nav-link" data-nav="completed">Завершённые</a>
+                <a href="#" class="nav-link" data-nav="high">Срочные</a>
+            </nav>
+            <div class="header-actions">
+                <span class="stats-badge" id="statsBadge">0 задач</span>
+                <button class="btn-icon" id="btnClearCompleted" title="Очистить завершённые">🗑️</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="card">
+            <div class="card-header">
+                <span class="icon-circle add">＋</span>
+                <h2>Добавить новую задачу</h2>
+            </div>
+            <form id="taskForm" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group" style="flex: 1.8;">
+                        <label for="taskTitle">Название задачи *</label>
+                        <input type="text" id="taskTitle" placeholder="Например: Подготовить отчёт..." required maxlength="200">
+                    </div>
+                    <div class="form-group" style="flex: 0.8;">
+                        <label for="taskPriority">Приоритет</label>
+                        <select id="taskPriority">
+                            <option value="low">Низкий</option>
+                            <option value="medium" selected>Средний</option>
+                            <option value="high">Высокий</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 0.9;">
+                        <label for="taskDue">Срок (дата)</label>
+                        <input type="date" id="taskDue">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">➕ Добавить</button>
+                </div>
+                <div class="form-row" style="margin-top: 10px;">
+                    <div class="form-group" style="flex: 3;">
+                        <label for="taskDesc">Описание (необязательно)</label>
+                        <input type="text" id="taskDesc" placeholder="Краткое описание задачи..." maxlength="500">
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <span class="icon-circle list">📋</span>
+                <h2 id="tasksHeading">Все задачи</h2>
+            </div>
+            <div class="filters-bar">
+                <button class="filter-chip active" data-filter="all">Все</button>
+                <button class="filter-chip" data-filter="high">🔴 Высокий</button>
+                <button class="filter-chip" data-filter="medium">🟡 Средний</button>
+                <button class="filter-chip" data-filter="low">🟢 Низкий</button>
+                <button class="filter-chip" data-filter="overdue">⏰ Просроченные</button>
+            </div>
+            <div class="tasks-list" id="tasksList"></div>
+        </section>
+    </main>
+
+    <footer class="footer">TaskFlow © 2026 — Управляй задачами эффективно</footer>
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="1.js"></script>
+</body>
+</html>
